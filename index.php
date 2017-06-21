@@ -7,14 +7,14 @@
         $body = 'Please sign me up for the mailing list';
 
         if(!$_POST['email']) {
-            $emailError = 'Please enter a valid email address';
+            $emailError = '<div class="text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Please enter a valid email address</div>';
         }
 
         if(!$emailError) {
             if(mail($to, $subject, $body, $from)) {
-                $result = 'Thank you! We will keep you updated';
+                $result = '<div class="text-success"><i class="fa fa-check" aria-hidden="true"></i>Thank you! We will keep you updated</div>';
             } else {
-                $result = 'Sorry! There has been an error. Please try again later.';
+                $result = '<div class="text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry! There has been an error. Please try again later.</div>';
             }
         }
     }
@@ -90,6 +90,7 @@
                       <button type="submit" class="btn btn-signup btn-sm" name="submit" value="send">Subscribe</button>
                   </form>
                   <?php echo $emailError;?>
+                  <?php echo $result;?>
 
                 </div>
             </div>
